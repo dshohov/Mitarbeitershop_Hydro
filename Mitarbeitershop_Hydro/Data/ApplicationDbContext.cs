@@ -9,6 +9,6 @@ namespace Mitarbeitershop_Hydro.Data
         { 
         
         }
-        DbSet<Category> Categories { get; set; }
+        public DbSet<Category> Categories { get; set; }
     }
 }
