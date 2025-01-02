@@ -19,6 +19,7 @@ namespace Mitarbeitershop_Hydro.Controllers
 
         public IActionResult Index()
         {
+
             return View();
         }
 
