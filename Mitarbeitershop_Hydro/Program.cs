@@ -1,7 +1,13 @@
 using Hydro.Configuration;
+using Microsoft.EntityFrameworkCore;
+using Mitarbeitershop_Hydro.Data;
 using Mitarbeitershop_Hydro.Helpers.HelpersModels;
 using Mitarbeitershop_Hydro.Helpers.HelpersServces;
 using Mitarbeitershop_Hydro.Helpers.IHelpersServices;
+using Mitarbeitershop_Hydro.IRepositories;
+using Mitarbeitershop_Hydro.IServices;
+using Mitarbeitershop_Hydro.Repositories;
+using Mitarbeitershop_Hydro.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +16,18 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddHydro();
 builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+
+
 builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+builder.Services.AddScoped<ICategoryService, CategoryService>();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+
 var app = builder.Build();
 
 
