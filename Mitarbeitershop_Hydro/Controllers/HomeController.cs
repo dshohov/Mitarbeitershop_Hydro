@@ -1,5 +1,8 @@
 using System.Diagnostics;
+using CloudinaryDotNet.Actions;
+using CloudinaryDotNet;
 using Microsoft.AspNetCore.Mvc;
+using Mitarbeitershop_Hydro.Helpers.IHelpersServices;
 using Mitarbeitershop_Hydro.Models;
 
 namespace Mitarbeitershop_Hydro.Controllers
@@ -11,6 +14,7 @@ namespace Mitarbeitershop_Hydro.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
         }
 
         public IActionResult Index()

@@ -1,4 +1,7 @@
 using Hydro.Configuration;
+using Mitarbeitershop_Hydro.Helpers.HelpersModels;
+using Mitarbeitershop_Hydro.Helpers.HelpersServces;
+using Mitarbeitershop_Hydro.Helpers.IHelpersServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -6,8 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 builder.Services.AddHydro();
-
-
+builder.Services.Configure<CloudinarySettings>(builder.Configuration.GetSection("CloudinarySettings"));
+builder.Services.AddScoped<ICloudinaryService, CloudinaryService>();
 var app = builder.Build();
 
 
