@@ -1,0 +1,37 @@
+﻿@model Mitarbeitershop_Hydro.Views.Category.Components.ListCategory
+
+
+<div>
+    <div class="flex justify-end mb-4">
+        <a asp-controller="Category" asp-action="Add" hydro-link>
+            <button class="btn btn-primary">
+                Add Category
+            </button>
+        </a>
+    </div>
+    <div class="album">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                @foreach (var category in Model.Categories)
+                {
+                    <div class="col">
+                        <div class="card shadow-sm">
+                            <img src="@category.Image" alt="@category.Name" class="bd-placeholder-img card-img-top" />
+                            <div class="card-body">
+                                <h3 class="card-text">@category.Name</h3>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                        <button type="button" on:click="@(() =>Model.DeleteCategory(category.Id))" class="btn btn-sm btn-outline-secondary">Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>

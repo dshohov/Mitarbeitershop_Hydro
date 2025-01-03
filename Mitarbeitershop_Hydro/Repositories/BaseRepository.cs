@@ -29,7 +29,7 @@ namespace Mitarbeitershop_Hydro.Repositories
         }
 
         public async Task UpdateIternalAsync(T entity)
-        {
+        {        
             if (entity == null) throw new ArgumentNullException(nameof(entity) + " + " + typeof(T));
             _dbSet.Update(entity);
             await _context.SaveChangesAsync();
