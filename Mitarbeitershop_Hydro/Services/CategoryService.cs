@@ -21,7 +21,7 @@ namespace Mitarbeitershop_Hydro.Services
 
         public async Task AddCategoryAsync(AddCategoryViewModel addCategoryViewModel)
         {
-            if(addCategoryViewModel == null) throw new ArgumentNullException("category");
+            if(addCategoryViewModel == null) throw new ArgumentNullException("addCategoryViewModel");
 
             var imageUploadResult = await _cloudinaryService.AddPhotoAsync(addCategoryViewModel.ImageFile);
 
@@ -34,26 +34,16 @@ namespace Mitarbeitershop_Hydro.Services
             await _categoryRepository.AddCategoryAsync(category);
         }
 
-        public async Task DeleteCategoryAsync(string id)
-        {
+        public async Task DeleteCategoryAsync(string id) =>
             await _categoryRepository.DeleteCategoryAsync(id);
-        }
 
-        public async Task<List<Category>> GetCategoriesAsync()
-        {
-            return await _categoryRepository.GetCategories().ToListAsync();
-        }
+        public async Task<List<Category>> GetCategoriesAsync() =>
+            await _categoryRepository.GetCategories().ToListAsync();
 
-        public async Task<Category> GetCategoryByIdAsync(string id)
-        {
-            return await _categoryRepository.GetCategoryByIdAsync(id);
-        }
+        public async Task<Category> GetCategoryByIdAsync(string id) =>
+            await _categoryRepository.GetCategoryByIdAsync(id);
 
-        public async Task UpdateCategoryAsync(Category category)
-        {
-            if (category == null) throw new ArgumentNullException("category");
-
+        public async Task UpdateCategoryAsync(Category category) =>
             await _categoryRepository.UpdateCategoryAsync(category);
-        }
     }
 }
